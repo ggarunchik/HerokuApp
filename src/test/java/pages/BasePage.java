@@ -45,6 +45,10 @@ public class BasePage {
         Assert.assertEquals(driver.findElement(elementBy).getAttribute("value"), expectedText);
     }
 
+    public void assertIntValuesEquals(int firstValue, int secondValue) {
+        Assert.assertEquals(firstValue, secondValue, "Values are not equals");
+    }
+
     public void selectFromDropDown(By elementBy, String textToSelect) {
         select = new Select(driver.findElement(elementBy));
         select.selectByVisibleText(textToSelect);

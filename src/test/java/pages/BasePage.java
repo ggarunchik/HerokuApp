@@ -63,4 +63,12 @@ public class BasePage {
         Assert.assertEquals(alert.getText(), expectedAlertText);
         alert.accept();
     }
+
+    public void isCheckBoxChecked(By elementBy) {
+        Assert.assertTrue(driver.findElement(elementBy).isSelected());
+    }
+
+    public void isCheckBoxNotChecked(By elementBy) {
+        Assert.assertFalse(driver.findElement(elementBy).isSelected());
+    }
 }

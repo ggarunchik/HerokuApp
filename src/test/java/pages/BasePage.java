@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -15,6 +16,7 @@ public class BasePage {
     WebDriverWait wait;
     Select select;
     Alert alert;
+    Actions actions;
 
     BasePage(WebDriver driver) {
         this.driver = driver;
@@ -71,5 +73,9 @@ public class BasePage {
 
     public void isCheckBoxNotSelected(By elementBy) {
         Assert.assertFalse(driver.findElement(elementBy).isSelected());
+    }
+
+    public void navigateBack() {
+        driver.navigate().back();
     }
 }

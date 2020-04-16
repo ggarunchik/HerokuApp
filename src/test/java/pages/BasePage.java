@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+
 public class BasePage {
 
     WebDriver driver;
@@ -58,17 +59,17 @@ public class BasePage {
         driver.findElement(elementBy).clear();
     }
 
-    public void verifyAlertText(String expectedAlertText){
+    public void verifyAlertText(String expectedAlertText) {
         alert = driver.switchTo().alert();
         Assert.assertEquals(alert.getText(), expectedAlertText);
         alert.accept();
     }
 
-    public void isCheckBoxChecked(By elementBy) {
+    public void isCheckBoxSelected(By elementBy) {
         Assert.assertTrue(driver.findElement(elementBy).isSelected());
     }
 
-    public void isCheckBoxNotChecked(By elementBy) {
+    public void isCheckBoxNotSelected(By elementBy) {
         Assert.assertFalse(driver.findElement(elementBy).isSelected());
     }
 }

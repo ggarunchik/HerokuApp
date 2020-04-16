@@ -20,22 +20,22 @@ public class CheckBoxesPage extends BasePage {
     }
 
     public CheckBoxesPage isFirstCheckBoxSelected() {
-        isCheckBoxSelected(firstCheckBox);
+        isCheckBoxChecked(firstCheckBox);
         return this;
     }
 
     public CheckBoxesPage isSecondCheckBoxSelected() {
-        isCheckBoxSelected(secondCheckBox);
+        isCheckBoxChecked(secondCheckBox);
         return this;
     }
 
     public CheckBoxesPage isFirstCheckBoxNotSelected() {
-        isCheckBoxNotSelected(firstCheckBox);
+        isCheckBoxNotChecked(firstCheckBox);
         return this;
     }
 
     public CheckBoxesPage isSecondCheckBoxNotSelected() {
-        isCheckBoxNotSelected(secondCheckBox);
+        isCheckBoxNotChecked(secondCheckBox);
         return this;
     }
 
@@ -44,7 +44,7 @@ public class CheckBoxesPage extends BasePage {
         return this;
     }
 
-    public CheckBoxesPage selectSecondCheckBox() {
+    public CheckBoxesPage checkSecondCheckBox() {
         click(secondCheckBox);
         return this;
     }

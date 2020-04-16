@@ -21,7 +21,7 @@ public class CheckBoxesTest extends BaseTest {
         checkBoxesPage
                 .openCheckBoxPage()
                 .isSecondCheckBoxSelected()
-                .selectSecondCheckBox()
+                .checkSecondCheckBox()
                 .isSecondCheckBoxNotSelected();
     }
 

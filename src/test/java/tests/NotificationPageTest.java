@@ -10,7 +10,14 @@ public class NotificationPageTest extends BaseTest {
         NotificationPage notificationPage = new NotificationPage(driver);
         notificationPage
                 .openNotificationPage()
-                .verifySuccessAlert()
+                .verifySuccessAlert();
+    }
+
+    @Test
+    public void verifyUnSuccessAlertMessage() {
+        NotificationPage notificationPage = new NotificationPage(driver);
+        notificationPage
+                .openNotificationPage()
                 .verifyUnSuccessAlert();
     }
 }

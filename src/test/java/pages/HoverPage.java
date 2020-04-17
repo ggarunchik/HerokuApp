@@ -10,11 +10,11 @@ public class HoverPage extends BasePage {
     private static final String hoverPageUrl = "http://the-internet.herokuapp.com/hovers";
 
     private By firstAvatar = By.xpath("//*[@id=\"content\"]/div/div[1]");
-    private By firstAvatarInfo = By.xpath("//*[@id=\"content\"]/div/div[1]");
+    private By firstAvatarInfo = By.xpath("//*[@id=\"content\"]/div/div[1]/div/a");
     private By secondAvatar = By.xpath("//*[@id=\"content\"]/div/div[2]");
-    private By secondAvatarInfo = By.xpath("//*[@id=\"content\"]/div/div[2]");
+    private By secondAvatarInfo = By.xpath("//*[@id=\"content\"]/div/div[2]/div/a");
     private By thirdAvatar = By.xpath("//*[@id=\"content\"]/div/div[3]");
-    private By thirdAvatarInfo = By.xpath("//*[@id=\"content\"]/div/div[3]");
+    private By thirdAvatarInfo = By.xpath("//*[@id=\"content\"]/div/div[3]/div/a");
 
     public HoverPage(WebDriver driver) {
         super(driver);
@@ -27,10 +27,7 @@ public class HoverPage extends BasePage {
 
     public HoverPage hoverOverFirstProfile() {
         actions = new Actions(driver);
-        actions.moveToElement(
-                driver.findElement(firstAvatar))
-                .moveToElement((driver.findElement(firstAvatarInfo)))
-                .click().build().perform();
+        actions.moveToElement(driver.findElement(firstAvatar)).moveToElement((driver.findElement(firstAvatarInfo))).click().build().perform();
         String currentUrl = driver.getCurrentUrl();
         int statusCode = HttpResponseValidator.httpResponseCodeViaGet(currentUrl);
         assertIntValuesEquals(statusCode, 404);
@@ -40,9 +37,7 @@ public class HoverPage extends BasePage {
     public HoverPage hoverOverSecondProfile() {
         actions = new Actions(driver);
         actions.moveToElement(
-                driver.findElement(secondAvatar))
-                .moveToElement((driver.findElement(secondAvatarInfo)))
-                .click().build().perform();
+                driver.findElement(secondAvatar)).moveToElement((driver.findElement(secondAvatarInfo))).click().build().perform();
         String currentUrl = driver.getCurrentUrl();
         int statusCode = HttpResponseValidator.httpResponseCodeViaGet(currentUrl);
         assertIntValuesEquals(statusCode, 404);
@@ -51,10 +46,7 @@ public class HoverPage extends BasePage {
 
     public HoverPage hoverOverThirdProfile() {
         actions = new Actions(driver);
-        actions.moveToElement(
-                driver.findElement(thirdAvatar))
-                .moveToElement((driver.findElement(thirdAvatarInfo)))
-                .click().build().perform();
+        actions.moveToElement(driver.findElement(thirdAvatar)).moveToElement((driver.findElement(thirdAvatarInfo))).click().build().perform();
         String currentUrl = driver.getCurrentUrl();
         int statusCode = HttpResponseValidator.httpResponseCodeViaGet(currentUrl);
         assertIntValuesEquals(statusCode, 404);

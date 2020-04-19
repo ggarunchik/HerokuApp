@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -14,6 +15,7 @@ public class BasePage {
     WebDriverWait wait;
     Select select;
     Alert alert;
+    Actions actions;
 
     BasePage(WebDriver driver) {
         this.driver = driver;
@@ -45,6 +47,10 @@ public class BasePage {
         Assert.assertEquals(driver.findElement(elementBy).getAttribute("value"), expectedText);
     }
 
+    public void assertEquals(int firstValue, int secondValue) {
+        Assert.assertEquals(firstValue, secondValue, "Values are not equals");
+    }
+
     public void selectFromDropDown(By elementBy, String textToSelect) {
         select = new Select(driver.findElement(elementBy));
         select.selectByVisibleText(textToSelect);
@@ -54,9 +60,21 @@ public class BasePage {
         driver.findElement(elementBy).clear();
     }
 
-    public void verifyAlertText(String expectedAlertText){
+    public void verifyAlertText(String expectedAlertText) {
         alert = driver.switchTo().alert();
         Assert.assertEquals(alert.getText(), expectedAlertText);
         alert.accept();
+    }
+
+    public void isCheckBoxSelected(By elementBy) {
+        Assert.assertTrue(driver.findElement(elementBy).isSelected());
+    }
+
+    public void isCheckBoxNotSelected(By elementBy) {
+        Assert.assertFalse(driver.findElement(elementBy).isSelected());
+    }
+
+    public void navigateBack() {
+        driver.navigate().back();
     }
 }

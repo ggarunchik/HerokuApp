@@ -1,7 +1,7 @@
 package tests;
 
-import org.testng.annotations.Test;
-import pages.ElementsPage;
+        import org.testng.annotations.Test;
+        import pages.ElementsPage;
 
 public class ElementsTest extends BaseTest {
 
@@ -10,8 +10,8 @@ public class ElementsTest extends BaseTest {
         ElementsPage elementsPage = new ElementsPage(driver);
         elementsPage
                 .openElementsPage()
-                .addMultiplyElements(2)
-                .deleteLastElement()
-                .verifyElementsAmount(1);
+                .addMultiplyElements(5)
+                .deleteElementByIndex(2)
+                .verifyElementsAmount(4);
     }
 }

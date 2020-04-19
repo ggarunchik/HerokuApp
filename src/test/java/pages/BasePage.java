@@ -47,7 +47,7 @@ public class BasePage {
         Assert.assertEquals(driver.findElement(elementBy).getAttribute("value"), expectedText);
     }
 
-    public void assertIntValuesEquals(int firstValue, int secondValue) {
+    public void assertEquals(int firstValue, int secondValue) {
         Assert.assertEquals(firstValue, secondValue, "Values are not equals");
     }
 

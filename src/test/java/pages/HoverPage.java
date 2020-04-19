@@ -30,7 +30,7 @@ public class HoverPage extends BasePage {
         actions.moveToElement(driver.findElement(firstAvatar)).moveToElement((driver.findElement(firstAvatarInfo))).click().build().perform();
         String currentUrl = driver.getCurrentUrl();
         int statusCode = HttpResponseValidator.httpResponseCodeViaGet(currentUrl);
-        assertIntValuesEquals(statusCode, 404);
+        assertEquals(statusCode, 404);
         return this;
     }
 
@@ -40,7 +40,7 @@ public class HoverPage extends BasePage {
                 driver.findElement(secondAvatar)).moveToElement((driver.findElement(secondAvatarInfo))).click().build().perform();
         String currentUrl = driver.getCurrentUrl();
         int statusCode = HttpResponseValidator.httpResponseCodeViaGet(currentUrl);
-        assertIntValuesEquals(statusCode, 404);
+        assertEquals(statusCode, 404);
         return this;
     }
 
@@ -49,7 +49,7 @@ public class HoverPage extends BasePage {
         actions.moveToElement(driver.findElement(thirdAvatar)).moveToElement((driver.findElement(thirdAvatarInfo))).click().build().perform();
         String currentUrl = driver.getCurrentUrl();
         int statusCode = HttpResponseValidator.httpResponseCodeViaGet(currentUrl);
-        assertIntValuesEquals(statusCode, 404);
+        assertEquals(statusCode, 404);
         return this;
     }
 }

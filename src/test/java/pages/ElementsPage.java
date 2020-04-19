@@ -11,7 +11,7 @@ public class ElementsPage extends BasePage {
     private static final String elementsPageUrl = "http://the-internet.herokuapp.com/add_remove_elements/";
 
     private By addElementBtn = By.xpath("//button[text()='Add Element']");
-    private By deleteElementBtn = By.xpath("//button[text()='Delete']");
+    private By deleteElementBtn = By.className("added-manually");
 
     public ElementsPage(WebDriver driver) {
         super(driver);
@@ -29,16 +29,16 @@ public class ElementsPage extends BasePage {
         return this;
     }
 
-    public ElementsPage deleteLastElement() {
-        List<WebElement> createdElements = driver.findElements(By.className("added-manually"));
-        int lastElement = createdElements.size() - 1;
-        driver.findElements(By.className("added-manually")).get(lastElement).click();
+    public ElementsPage deleteElementByIndex(int elementIndex) {
+        List<WebElement> createdElements = driver.findElements(deleteElementBtn);
+        WebElement elementToDelete = createdElements.get(elementIndex);
+        elementToDelete.click();
         return this;
     }
 
     public ElementsPage verifyElementsAmount(int expectedAmount) {
         int numOfElements = driver.findElements(By.className("added-manually")).size();
-        assertIntValuesEquals(numOfElements, expectedAmount);
+        assertEquals(numOfElements, expectedAmount);
         return this;
     }
 }

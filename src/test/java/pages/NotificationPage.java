@@ -10,8 +10,8 @@ public class NotificationPage extends BasePage {
 
     private static final String notificationPageUrl = "http://the-internet.herokuapp.com/notification_message_rendered";
 
-    private By clickHereBtn = By.xpath("//*[@id=\"content\"]/div/p/a");
-    private By alertMessage = By.xpath("//*[@id=\"flash\"]");
+    private By clickHereBtn = By.xpath("//a[text()='Click here']");
+    private By alertMessage = By.id("flash");
 
     public NotificationPage(WebDriver driver) {
         super(driver);

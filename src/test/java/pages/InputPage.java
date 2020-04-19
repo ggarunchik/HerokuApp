@@ -8,7 +8,7 @@ public class InputPage extends BasePage {
 
     private static final String inputPageUrl = "http://the-internet.herokuapp.com/inputs";
 
-    By inputField = By.xpath("//*[@id=\"content\"]/div/div/div/input");
+    By inputField = By.tagName("input");
 
     public InputPage(WebDriver driver) {
         super(driver);
@@ -24,7 +24,7 @@ public class InputPage extends BasePage {
             driver.findElement(inputField).sendKeys(Keys.ARROW_UP);
         }
         int inputValue = Integer.parseInt(driver.findElement(inputField).getAttribute("value"));
-        assertIntValuesEquals(inputValue, clickNumber);
+        assertEquals(inputValue, clickNumber);
         return this;
     }
 
@@ -33,7 +33,7 @@ public class InputPage extends BasePage {
             driver.findElement(inputField).sendKeys(Keys.ARROW_DOWN);
         }
         int inputValue = Integer.parseInt(driver.findElement(inputField).getAttribute("value"));
-        assertIntValuesEquals(inputValue, clickNumber * -1);
+        assertEquals(inputValue, clickNumber * -1);
         return this;
     }
 

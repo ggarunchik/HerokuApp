@@ -12,20 +12,10 @@ import java.util.List;
 public class DropDownPage extends BasePage {
 
     private static final String dropDownPageUrl = "http://the-internet.herokuapp.com/dropdown";
-    private By dropDownMenu = By.xpath("//*[@id=\"dropdown\"]");
-
-    private final List<String> optionsList = new ArrayList<>();
-
+    private By dropDownMenu = By.id("dropdown");
 
     public DropDownPage(WebDriver driver) {
         super(driver);
-        initOptionsList();
-    }
-
-    private void initOptionsList() {
-        optionsList.add("Please select an option");
-        optionsList.add("Option 1");
-        optionsList.add("Option 2");
     }
 
     public DropDownPage openDropDownPage() {
@@ -33,7 +23,14 @@ public class DropDownPage extends BasePage {
         return this;
     }
 
-    public DropDownPage verifyDropDownOptions() {
+    public void initOptionsList(List<String> optionsList) {
+        optionsList.add("Please select an option");
+        optionsList.add("Option 1");
+        optionsList.add("Option 2");
+    }
+
+
+    public DropDownPage verifyDropDownOptions(List<String> optionsList) {
         select = new Select(driver.findElement(dropDownMenu));
         List<WebElement> optionsElements = select.getOptions();
         for (int i = 0; i < optionsElements.size(); i++) {

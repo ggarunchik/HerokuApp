@@ -10,7 +10,7 @@ public class DragAndDropTest extends BaseTest {
         DragAndDropPage dragAndDropPage = new DragAndDropPage(driver);
         dragAndDropPage
                 .openDragAndDropPage()
-                .dragAndDropColumn("B")
+                .dragAndDropColumnHtml5("B")
                 .verifyLastColumnName("A");
     }
 }

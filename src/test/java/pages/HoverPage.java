@@ -36,8 +36,7 @@ public class HoverPage extends BasePage {
 
     public HoverPage hoverOverSecondProfile() {
         actions = new Actions(driver);
-        actions.moveToElement(
-                driver.findElement(secondAvatar)).moveToElement((driver.findElement(secondAvatarInfo))).click().build().perform();
+        actions.moveToElement(driver.findElement(secondAvatar)).moveToElement((driver.findElement(secondAvatarInfo))).click().build().perform();
         String currentUrl = driver.getCurrentUrl();
         int statusCode = HttpResponseValidator.httpResponseCodeViaGet(currentUrl);
         assertEquals(statusCode, 404);

@@ -20,6 +20,7 @@ public class BasePage {
     BasePage(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, 15);
+        actions = new Actions(this.driver);
     }
 
     public void waitForElementVisibility(By elementBy) {
@@ -51,6 +52,10 @@ public class BasePage {
         Assert.assertEquals(firstValue, secondValue, "Values are not equals");
     }
 
+    public void assertEquals(String firstValue, String secondValue) {
+        Assert.assertEquals(firstValue, secondValue, "Values are not equals");
+    }
+
     public void selectFromDropDown(By elementBy, String textToSelect) {
         select = new Select(driver.findElement(elementBy));
         select.selectByVisibleText(textToSelect);
@@ -60,10 +65,30 @@ public class BasePage {
         driver.findElement(elementBy).clear();
     }
 
-    public void verifyAlertText(String expectedAlertText) {
+    /**
+     * @param expectedAlertText type expected text in JS alert
+     * @param action            type "accept" to accept JS alert / "dismiss to dismiss JS alert / "null"
+     */
+    public void verifyAlertText(String expectedAlertText, String action) {
+        wait.until(ExpectedConditions.alertIsPresent());
         alert = driver.switchTo().alert();
         Assert.assertEquals(alert.getText(), expectedAlertText);
-        alert.accept();
+        switch (action) {
+            case ("accept"):
+                alert.accept();
+                break;
+            case ("dismiss"):
+                alert.dismiss();
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void enterAlertPromptMessage(String alertPromptMessage) {
+        wait.until(ExpectedConditions.alertIsPresent());
+        alert = driver.switchTo().alert();
+        alert.sendKeys(alertPromptMessage);
     }
 
     public void isCheckBoxSelected(By elementBy) {
